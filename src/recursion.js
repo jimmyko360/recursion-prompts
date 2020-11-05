@@ -56,12 +56,11 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  if (n === 0) {
+  return n/2;
+  if (Math.floor(isEven(n)) === isEven(n)) {
     return true;
-  } else if (Math.abs(n) < 2) {
-    return false;
   } else {
-  return Math.abs(n)/2 === 1 ? true : isEven(Math.abs(n)/2);
+    return false;
   }
 };
 
@@ -69,6 +68,11 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  if (n === 0 || n === 1) {
+    return 0;
+  } else {
+    return (n-1) + sumBelow(n-2);
+  }
 };
 
 // 6. Get the integers within a range (x, y).
