@@ -56,22 +56,25 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  return n/2;
-  if (Math.floor(isEven(n)) === isEven(n)) {
-    return true;
-  } else {
-    return false;
-  }
+  //input is integer to
+  //must convert
+  //output is boolean
+
+
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-  if (n === 0 || n === 1) {
+  if (n === 0) {
     return 0;
-  } else {
-    return (n-1) + sumBelow(n-2);
+  }
+  if (n > 0) {
+    return (n-1) + sumBelow(n-1);
+  }
+  if (n < 0) {
+    return (n+1) + sumBelow(n+1);
   }
 };
 
