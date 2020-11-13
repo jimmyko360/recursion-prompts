@@ -59,8 +59,11 @@ var isEven = function(n) {
   //input is integer to
   //must convert
   //output is boolean
-
-
+  if (Math.floor(n/2) === n/2) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 // 5. Sum all integers below a given integer.
