@@ -60,10 +60,9 @@ var isEven = function(n) {
   //must convert
   //output is boolean
   if (Math.floor(n/2) === n/2) {
-    return true;
-  } else {
-    return false;
+    result = true;
   }
+  return isEven;
 };
 
 // 5. Sum all integers below a given integer.
@@ -92,6 +91,21 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if (exp === 1) {
+    return base;
+  }
+  if (exp === -1) {
+    return 1/base;
+  }
+  if (exp === 0) {
+    return 1;
+  }
+  if (exp > 0) {
+    return base * exponent(base, exp - 1);
+  }
+  if (exp < 0) {
+    return Number(((1/base) * exponent(base, exp + 1)).toFixed(5));
+  }
 };
 
 // 8. Determine if a number is a power of two.
