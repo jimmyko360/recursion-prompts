@@ -59,6 +59,7 @@ var isEven = function(n) {
   //input is integer to
   //must convert
   //output is boolean
+  var tracker = 1;
   if (Math.floor(n/2) === n/2) {
     result = true;
   }
