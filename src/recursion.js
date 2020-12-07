@@ -48,7 +48,7 @@ var arraySum = function(array) {
     //drill down into it
     return arraySum(array[len - 1]) + arraySum(array.slice(0, len - 1));
   //else
-  } else {
+ } else {
     //return array at len + array.slice
     return array[len - 1] + arraySum(array.slice(0, len - 1));
   }
@@ -59,11 +59,16 @@ var isEven = function(n) {
   //input is integer to
   //must convert
   //output is boolean
-  var tracker = 1;
-  if (Math.floor(n/2) === n/2) {
-    result = true;
+
+  if (n === 0) {
+    return true;
+  } else if (n === 1 ) {
+    return false;
+  } else if (n < 0) {
+    return isEven(Math.abs(n) - 2);
+  } else {
+    return isEven(n - 2);
   }
-  return isEven;
 };
 
 // 5. Sum all integers below a given integer.
@@ -83,7 +88,33 @@ var sumBelow = function(n) {
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+
+//INNER FUNCTION SOLUTION
+// var range = function(x, y) {
+//   var result = [];
+//   var finder = (int1, int2) => {
+//     //if the difference between the 2 integers is less than or equal to 1, dont recur
+//     if ((int1 - int2) > 1) {
+//       result.push(int1 - 1);
+//       finder(int1 - 1, int2);
+//     } else if ((int2 - int1) > 1) {
+//       result.push(int1 + 1);
+//       finder(int1 + 1, int2)
+//     }
+//   }
+//   finder(x, y);
+//   return result;
+// };
+
+//RECURSIVE SOLUTION
 var range = function(x, y) {
+  if ((x - y) > 1) {
+    return [x-1].concat(range((x-1), y));
+  } else if ((y - x) > 1) {
+    return [x+1].concat(range((x+1), y));
+  } else {
+    return []
+  }
 };
 
 // 7. Compute the exponent of a number.
@@ -114,14 +145,31 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if ((n/2) === 1 || n === 1) {
+    return true;
+  } else if (n%2 === 1 || n === 0) {
+    return false;
+  } else {
+    return powerOfTwo(n/2);
+  }
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  if (string.length > 0) {
+    return string[string.length-1] + reverse(string.substring(0, string.length-1));
+  } else {
+    return '';
+  }
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  if (string === reverse(string)) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
